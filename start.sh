@@ -4,9 +4,15 @@
 
 cd /server
 
+# taken from https://github.com/kaboomserver/framework/blob/99e84a8a33c83422a2aee730e9c20a9cce0e3aba/script/server.sh#L46-L47
+RAM="${RAM:-1700M}"
+
+INIT_RAM="${INIT_RAM:-$RAM}"
+MAX_RAM="${MAX_RAM:-$RAM}"
+
 # 🤤 Aikar's Flags
 java \
-  -Xms4096M -Xmx4096M \
+  -Xms$INIT_RAM -Xmx$MAX_RAM \
   --add-modules=jdk.incubator.vector \
   -XX:+UseG1GC \
   -XX:+ParallelRefProcEnabled \
